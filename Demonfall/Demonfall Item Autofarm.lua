@@ -1,6 +1,3 @@
-getgenv().enabled = true;
-getgenv().speed = 75;
-
 local function getClosestItem()
     local closestItem = nil;
     local closestItemDistance = math.huge;
