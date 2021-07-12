@@ -23,7 +23,7 @@ coroutine.wrap(function()
 
     local Tween = nil;
     while getgenv().enabled == true do
-        wait(1)
+        game:GetService("RunService").Heartbeat:Wait();
         local closestItem = getClosestItem();
         local item = closestItem[1];
         local distance = closestItem[2];
@@ -38,7 +38,7 @@ coroutine.wrap(function()
         Tween.Completed:Wait();
     
         keypress(0x45);
-        wait(math.random(100, 500)/1000);
+        game:GetService("RunService").Heartbeat:Wait();
         keyrelease(0x45);
     end
 
