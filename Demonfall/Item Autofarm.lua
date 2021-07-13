@@ -1,13 +1,28 @@
+
+if(not getgenv().priority) then
+    setclipboard("https://v3rmillion.net/showthread.php?tid=1126241&pid=7963821");
+    game:GetService("Players").LocalPlayer:Kick("Please get the new version from V3rmillion! The link has been copied to your clipboard!");
+    return;
+end
+
 local function getClosestItem()
     local closestItem = nil;
     local closestItemDistance = math.huge;
+
     for _, v in pairs(game:GetService("Workspace"):GetChildren()) do
-        if(v:FindFirstChild("Part") and v:FindFirstChild("Spawn")  and v.Name ~= "Trinkets") then
+        if(v:FindFirstChild("Part") and v:FindFirstChild("Spawn") and v.Name ~= "Trinkets") then
+
+            if(table.find(getgenv().priority, v.Name)) then
+                return {v, game:GetService("Players").LocalPlayer:DistanceFromCharacter(v.Part.Position)};
+            end
+
             local distance = game:GetService("Players").LocalPlayer:DistanceFromCharacter(v.Part.Position);
+
             if(distance < closestItemDistance) then
                 closestItem = v;
                 closestItemDistance = distance;
             end
+            
         end
     end
     return {closestItem, closestItemDistance};
