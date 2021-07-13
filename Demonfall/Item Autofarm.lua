@@ -1,4 +1,6 @@
 
+local VIM = game:GetService("VirtualInputManager");
+
 if(not getgenv().priority) then
     setclipboard("https://v3rmillion.net/showthread.php?tid=1126241&pid=7963821");
     game:GetService("Players").LocalPlayer:Kick("Please get the new version from V3rmillion! The link has been copied to your clipboard!");
@@ -52,9 +54,9 @@ coroutine.wrap(function()
         Tween:Play();
         Tween.Completed:Wait();
     
-        keypress(0x45);
+        VIM:SendKeyEvent(true, "E", false, game);
         game:GetService("RunService").Heartbeat:Wait();
-        keyrelease(0x45);
+        VIM:SendKeyEvent(false, "E", false, game);
     end
 
 end)()
